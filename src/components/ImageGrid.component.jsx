@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
-import ImageComponent from './Image.component';
-import { projectFirestore } from '../firebase/config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react";
+import ImageComponent from "./Image.component";
+import { projectFirestore } from "../firebase/config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrash,
+  faHeart,
+  faQuestion,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default class ImageGridComponent extends Component {
   constructor(props) {
@@ -14,7 +19,7 @@ export default class ImageGridComponent extends Component {
   }
 
   componentDidMount() {
-    projectFirestore.collection('awwpics').onSnapshot((snap) => {
+    projectFirestore.collection("awwpics").onSnapshot((snap) => {
       // Have to reset the documents collection to prevent double pictures
       this.documents = [];
       snap.forEach((doc) => {
@@ -26,11 +31,11 @@ export default class ImageGridComponent extends Component {
 
   deletePicture = (pictureId) => {
     projectFirestore
-      .collection('awwpics')
+      .collection("awwpics")
       .doc(pictureId)
       .delete()
       .then(() => {
-        console.log('Image deleted!');
+        console.log("Image deleted!");
       });
   };
 
@@ -47,6 +52,14 @@ export default class ImageGridComponent extends Component {
               >
                 <FontAwesomeIcon icon={faTrash} />
               </button>
+              <button className="btn btn-primary btn-style-like">
+                <FontAwesomeIcon icon={faHeart} />
+              </button>
+              <Link to={`/pet/${doc.id}`}>
+                <button className="btn btn-warning btn-style-info">
+                  <FontAwesomeIcon icon={faQuestion} />
+                </button>
+              </Link>
               <div className="info-block">
                 <p>{doc.alt}</p>
               </div>

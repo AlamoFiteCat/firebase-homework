@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const HomeComponent = () => {
   return (
     <div className="container home-comp">
       <div className="card">
         <div className="card-header">Aww Bomb!</div>
-        <div class="card-img-top card-pic" />
+        <div className="card-img-top card-pic" />
         <div className="card-body">
           <h5 className="card-title">Hello There!</h5>
           <h6 className="card-subtitle mb-2 text-muted">

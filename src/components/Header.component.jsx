@@ -1,36 +1,34 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderComponent = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a className="navbar-brand" href="/">
         Navbar
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">
+
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="/">
               Home
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="awwbomb">
+          <li className="nav-item">
+            <a className="nav-link" href="/awwbomb">
               Aww!
             </a>
           </li>
         </ul>
       </div>
+      <Link to={"/create"}>
+        <button className="btn btn-primary btn-lg mt-4 btn-style-add">
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </Link>
     </nav>
   );
 };
