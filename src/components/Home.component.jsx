@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const HomeComponent = () => {
   return (
@@ -16,7 +16,7 @@ const HomeComponent = () => {
             Seavus Education &amp; Development Center.
             <br />
             It uses <strong>Google Firebase</strong> as BaaS as well as
-            <strong>Google Firestore</strong> as a live NoSQL database.
+            <strong> Google Firestore</strong> as a live NoSQL database.
           </p>
         </div>
       </div>

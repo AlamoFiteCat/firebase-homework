@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from 'react';
+import { projectFirestore } from '../firebase/config';
 
 const AddPetComponent = () => {
+  const [formData, updateFormData] = useState({});
+
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    projectFirestore.collection('awwpics').add({
+      ...formData,
+    });
+  };
+
   return (
     <div className="container">
       <div className="card mt-4">
@@ -13,43 +32,49 @@ const AddPetComponent = () => {
               <input
                 type="text"
                 className="form-control"
-                id="pet-name"
+                name="name"
                 placeholder="Pet Name"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                id="pet-species"
+                name="species"
                 placeholder="Pet Species"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                id="pet-age"
+                name="age"
                 placeholder="Pet Age"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                id="pet-link"
+                name="url"
                 placeholder="Picture Link"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                id="pet-desc"
+                name="alt"
                 placeholder="Short description"
+                onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn btn-outline-success">
+
+            <button className="btn btn-outline-success" onClick={handleSubmit}>
               Submit
             </button>
           </form>
